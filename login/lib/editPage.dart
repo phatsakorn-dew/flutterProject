@@ -77,7 +77,6 @@ class _EditPageState extends State<editPage> {
                     Map input = {
                       'id': data.id,
                       'NameAndSurname': titleControllerName.text,
-                      'Email': titleControllerEmail.text,
                     };
                     if (formKey.currentState!.validate()) {
                       update(input);
