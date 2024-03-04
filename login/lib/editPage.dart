@@ -60,7 +60,7 @@ class _EditPageState extends State<editPage> {
                   },
                 ),
                 TextFormField(
-                  controller: titleControllerName,
+                  controller: titleControllerEmail,
                   autofocus: true,
                   decoration: InputDecoration(
                     hintText: 'Add a Email',
