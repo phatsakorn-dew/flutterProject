@@ -59,12 +59,25 @@ class _EditPageState extends State<editPage> {
                     return null;
                   },
                 ),
+                TextFormField(
+                  controller: titleControllerName,
+                  autofocus: true,
+                  decoration: InputDecoration(
+                    hintText: 'Add a Email',
+                    icon: Icon(Icons.title),
+                  ),
+                  validator: (value) {
+                    if (value!.isEmpty) return 'Please enter Email';
+                    return null;
+                  },
+                ),
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     Map input = {
                       'id': data.id,
                       'NameAndSurname': titleControllerName.text,
+                      'Email': titleControllerEmail.text,
                     };
                     if (formKey.currentState!.validate()) {
                       update(input);
