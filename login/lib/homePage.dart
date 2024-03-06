@@ -17,6 +17,7 @@ class _homePageState extends State<homePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Color.fromARGB(255, 25, 118, 210),
         toolbarHeight: 80,
         title: Row(
