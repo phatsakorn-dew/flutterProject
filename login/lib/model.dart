@@ -1,28 +1,28 @@
 class userDB {
   final int? id;
-  String NameAndSurname;
-  String PhoneNumber;
-  String Email;
-  String selectedContainerType;
-  int weight;
-  String selectedDestination;
-  int distance;
-  int basePriceByWeight;
-  int priceByDistance;
-  int totalPrice;
+  String? NameAndSurname;
+  String? PhoneNumber;
+  String? Email;
+  String? selectedContainerType;
+  int? weight;
+  String? selectedDestination;
+  int? distance;
+  int? basePriceByWeight;
+  int? priceByDistance;
+  int? totalPrice;
 
-  userDB(
-      {this.id,
-      required this.NameAndSurname,
-      required this.PhoneNumber,
-      required this.Email,
-      required this.selectedContainerType,
-      required this.weight,
-      required this.selectedDestination,
-      required this.distance,
-      required this.basePriceByWeight,
-      required this.priceByDistance,
-      required this.totalPrice});
+  userDB({
+      this.id,
+      this.NameAndSurname,
+      this.PhoneNumber,
+      this.Email,
+      this.selectedContainerType,
+      this.weight,
+      this.selectedDestination,
+      this.distance,
+      this.basePriceByWeight,
+      this.priceByDistance,
+      this.totalPrice});
 
   userDB.fromMap(Map<String, dynamic> item)
       : id = item['id'],

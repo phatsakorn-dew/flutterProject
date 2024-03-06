@@ -3,109 +3,108 @@ import 'manageDB.dart';
 import 'model.dart';
 
 class editPage extends StatefulWidget {
+  final userDB user;
+
+  editPage({required this.user});
+
   @override
   State<editPage> createState() => _EditPageState();
 }
 
 class _EditPageState extends State<editPage> {
-  manageDB db = manageDB();
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+  late TextEditingController _phoneNumberController;
+  late TextEditingController _emailController;
+
+  @override
+  void initState() {
+    super.initState();
+    _phoneNumberController = TextEditingController(text: widget.user.PhoneNumber);
+    _emailController = TextEditingController(text: widget.user.Email);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final data = ModalRoute.of(context)!.settings.arguments as userDB;
-    final titleControllerName =
-        TextEditingController(text: data.NameAndSurname);
-    final titleControllerEmail = TextEditingController(text: data.Email);
-    final titleControllerType =
-        TextEditingController(text: data.selectedContainerType);
-
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(99, 136, 137, 1),
-        title: Center(
-          child: Text(
-            'Example',
-            style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Noto Sans Thai'),
-          ),
-        ),
+        title: Row(
+          children:[
+          SizedBox(width: 100),
+          Text('Edit User', style: TextStyle(fontFamily: 'Noto Sans Thai')),
+          ]
       ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                Text(
-                  'Edit Name and Surname',
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Noto Sans Thai'),
+    ),
+      body: Padding(
+        padding: EdgeInsets.all(20.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFormField(
+                controller: _phoneNumberController,
+                keyboardType: TextInputType.phone,
+                decoration: InputDecoration(
+                  labelText: 'Phone Number',
                 ),
-                SizedBox(height: 20),
-                TextFormField(
-                  controller: titleControllerName,
-                  autofocus: true,
-                  decoration: InputDecoration(
-                    hintText: 'Add a Name and Surname',
-                    icon: Icon(Icons.title),
-                  ),
-                  validator: (value) {
-                    if (value!.isEmpty) return 'Please enter Name and Surname';
-                    return null;
-                  },
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter phone number';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  labelText: 'Email',
                 ),
-                TextFormField(
-                  controller: titleControllerEmail,
-                  autofocus: true,
-                  decoration: InputDecoration(
-                    hintText: 'Add a Email',
-                    icon: Icon(Icons.title),
-                  ),
-                  validator: (value) {
-                    if (value!.isEmpty) return 'Please enter Email';
-                    return null;
-                  },
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    Map input = {
-                      'id': data.id,
-                      'NameAndSurname': titleControllerName.text,
-                    };
-                    if (formKey.currentState!.validate()) {
-                      update(input);
-                      Navigator.pop(context);
-                    }
-                  },
-                  child: Text('Update'),
-                ),
-              ],
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter email';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  if (isValidEmail(_emailController.text) && isValidPhoneNumber(_phoneNumberController.text)) {
+                    // Update user data with new phone number and email
+                    widget.user.PhoneNumber = _phoneNumberController.text;
+                    widget.user.Email = _emailController.text;
+                    
+                    // Call method to update data in the database
+                    manageDB().updateData(widget.user);
+
+                    // Navigate back to the previous screen
+                    Navigator.pop(context);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Invalid email or phone number format'))
+                    );
+                  }
+                }
+              },
+              child: Text('Save', style: TextStyle(fontFamily: 'Noto Sans Thai')),
             ),
+            ],
           ),
         ),
       ),
     );
   }
+bool isValidEmail(String? email) {
+  if (email == null || email.isEmpty) return true;
+  final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+  return emailRegex.hasMatch(email);
+}
 
-  Future<void> update(Map input) async {
-    userDB data = userDB(
-        id: input['id'],
-        NameAndSurname: input['NameAndSurname'],
-        PhoneNumber: input['PhoneNumber'],
-        Email: input['Email'],
-        selectedContainerType: input['selectedContainerType'],
-        distance: input['distance'],
-        weight: input['weight'],
-        selectedDestination: input['selectedDestination'],
-        basePriceByWeight: input['basePriceByWeight'],
-        priceByDistance: input['priceByDistance'],
-        totalPrice: input['totalPrice']);
-    await db.updateData(data);
-  }
+bool isValidPhoneNumber(String? phoneNumber) {
+  if (phoneNumber == null || phoneNumber.isEmpty) return true;
+  final phoneRegex = RegExp(r'^0[0-9]{9}$');
+  return phoneRegex.hasMatch(phoneNumber);
+}
 }

@@ -65,16 +65,20 @@ class manageDB {
   }
 
   //--------- ฟังก์ชันสำหรับแก้ไข/อัพเดทข้อมูลในฐานข้อมูล ---------
-  Future updateData(userDB model) async {
-    var db = await initializedb();
-    var result = await db.update(
-      'user',
-      model.toMap(),
-      where: 'id=?',
-      whereArgs: [model.id],
-    );
-    return result;
-  }
+  Future<int> updateData(userDB model) async {
+  var db = await initializedb();
+  var result = await db.update(
+    'user',
+    {
+      'PhoneNumber': model.PhoneNumber,
+      'Email': model.Email,
+    },
+    where: 'id=?',
+    whereArgs: [model.id],
+  );
+  return result;
+}
+
 
   //--------- ฟังก์ชันสำหรับลบข้อมูลตาม id ที่ระบุใน whereArgs ---------
   Future deleteData(userDB model) async {

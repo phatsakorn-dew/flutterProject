@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login/Reserve.dart';
 import 'package:login/homePage.dart';
+import 'package:login/output.dart';
 
 class about extends StatefulWidget {
   const about({super.key});
@@ -47,7 +48,10 @@ class _AboutState extends State<about> {
               children: [
                 SizedBox(width: 5.0),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => output()));
+                  },
                   child: Text(
                     'My Orders',
                     style: TextStyle(fontSize: 9, fontFamily: 'Noto Sans Thai'),
@@ -109,7 +113,7 @@ class _AboutState extends State<about> {
       ),
       body: Container(
         child: Container(
-          height: 627,
+          height: 627, //627
           color: Colors.white,
           child: Center(
             child: Column(
@@ -119,17 +123,17 @@ class _AboutState extends State<about> {
                   child: Image.network(
                       'https://cdn.pixabay.com/photo/2017/12/15/22/25/hamburg-3021820_960_720.jpg'),
                 ),
-                SizedBox(height: 50),
+                SizedBox(height: 47),
                 Container(
                   alignment: Alignment.center,
                   child: Text(
                     'About Us',
                     style: TextStyle(
-                        fontFamily: 'Noto Sans Thai', color: Colors.blue[700]),
+                        fontFamily: 'Noto Sans Thai', color: Colors.blue[700],fontWeight: FontWeight.bold,fontSize: 20),
                   ),
                 ),
                 SizedBox(
-                  height: 48,
+                  height: 30,
                 ),
                 Container(
                   alignment: Alignment.center,
@@ -137,30 +141,30 @@ class _AboutState extends State<about> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                          'Anakorn Roumpattana \nPosition : (Project Manager,Plan Design UI,Programmer)\n',
+                          'Anakorn Roumpattana \nPosition : Project Manager,Plan Design UI,Programmer\n',
                           style: TextStyle(
-                              fontSize: 13,
+                              fontSize: 14,
                               fontFamily: 'Noto Sans Thai',
                               color: Colors.blue[700])),
                       SizedBox(height: 1),
                       Text(
-                          'Phatsakorn Meesuk \nPosition : (Design UI in Figma,Programmer)\n',
+                          'Phatsakorn Meesuk \nPosition : Design UI in Figma,Programmer\n',
                           style: TextStyle(
-                              fontSize: 13,
+                              fontSize: 14,
                               fontFamily: 'Noto Sans Thai',
                               color: Colors.blue[700])),
                       SizedBox(height: 1),
                       Text(
-                          'Patthaphoom Panpran \nPosition : (Programmer,Database Support)\n',
+                          'Patthaphoom Panpran \nPosition : Programmer,Database Support\n',
                           style: TextStyle(
-                              fontSize: 13,
+                              fontSize: 14,
                               fontFamily: 'Noto Sans Thai',
                               color: Colors.blue[700])),
                       SizedBox(height: 1),
                       Text(
-                          'Prarittakorn Sangkhapanich \nPosition : (Programmer,Database Management)\n',
+                          'Prarittakorn Sangkhapanich \nPosition : Programmer,Database Management\n',
                           style: TextStyle(
-                              fontSize: 13,
+                              fontSize: 14,
                               fontFamily: 'Noto Sans Thai',
                               color: Colors.blue[700])),
                     ],
