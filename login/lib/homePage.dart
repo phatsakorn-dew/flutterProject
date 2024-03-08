@@ -253,7 +253,10 @@ class _homePageState extends State<homePage> {
                         TextButton(
                           onPressed: () {
                             signUserOut();
-                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => authPage()));
                           },
                           child: Text(
                             'OK',
@@ -267,7 +270,7 @@ class _homePageState extends State<homePage> {
               },
               child: Text(
                 'Logout',
-                style: TextStyle(fontSize: 10, fontFamily: 'Noto Sans Thai'),
+                style: TextStyle(fontSize: 10, fontFamily: 'NotoSansThai'),
               ),
               style: TextButton.styleFrom(
                 minimumSize: Size(50, 0),
