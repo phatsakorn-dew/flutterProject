@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:login/Reserve.dart';
 import 'package:login/about_us.dart';
+import 'package:login/authPage.dart';
 import 'package:login/output.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
@@ -249,7 +250,7 @@ class _homePageState extends State<homePage> {
                         TextButton(
                           onPressed: () {
                             signUserOut();
-                            Navigator.pop(context);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => authPage()));
                           },
                           child: Text(
                             'OK',
