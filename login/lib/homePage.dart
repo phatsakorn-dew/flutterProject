@@ -253,10 +253,7 @@ class _homePageState extends State<homePage> {
                         TextButton(
                           onPressed: () {
                             signUserOut();
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => authPage()));
+                            Navigator.pop(context);
                           },
                           child: Text(
                             'OK',
