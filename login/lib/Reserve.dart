@@ -427,8 +427,10 @@ class _Reserve extends State<Reserve> {
                         TextButton(
                           onPressed: () {
                             signUserOut();
-                            Navigator.pop(context);
-                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => authPage()));
                           },
                           child: Text('OK',
                               style: TextStyle(fontFamily: 'Noto Sans Thai')),
