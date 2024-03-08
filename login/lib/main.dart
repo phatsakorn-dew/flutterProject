@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import './authPage.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,11 +25,10 @@ class MyApp extends StatelessWidget {
         title: Text(
           'Shippiing B2C',
           style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            // fontFamily: 'Noto Sans Thai'
-          ),
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Noto Sans Thai'),
         ),
       ),
       body: Center(

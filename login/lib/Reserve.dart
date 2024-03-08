@@ -42,99 +42,97 @@ class _Reserve extends State<Reserve> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[700],
-        toolbarHeight: 70,
+        backgroundColor: Color.fromARGB(255, 25, 118, 210),
+        toolbarHeight: 80,
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'Shippiing B2C',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Noto Sans Thai'),
-            ),
-            SizedBox(width: 8),
             TextButton(
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => about()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => homePage()));
               },
               child: Text(
-                'About Us',
-                style: TextStyle(fontSize: 9, fontFamily: 'Noto Sans Thai'),
-              ),
-              style: TextButton.styleFrom(
-                minimumSize: Size(50, 0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                side: BorderSide(color: Colors.white),
-                primary: Colors.white,
-                backgroundColor: Colors.transparent,
+                'ShippingB2S',
+                style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
-            Row(
+            Column(
               children: [
-                SizedBox(width: 5.0),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: ((context) => output())));
-                  },
-                  child: Text(
-                    'My Orders',
-                    style: TextStyle(fontSize: 9, fontFamily: 'Noto Sans Thai'),
-                  ),
-                  style: TextButton.styleFrom(
-                    minimumSize: Size(50, 0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+                Row(
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => about()));
+                      },
+                      child: Text(
+                        'About Us',
+                        style: TextStyle(
+                          fontSize: 9,
+                        ),
+                      ),
+                      style: TextButton.styleFrom(
+                        minimumSize: Size(50, 0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        side: BorderSide(color: Colors.white),
+                        primary: Colors.white,
+                        backgroundColor: Colors.transparent,
+                      ),
                     ),
-                    side: BorderSide(color: Colors.white),
-                    primary: Colors.white,
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-                SizedBox(width: 5.0),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Reserve',
-                    style: TextStyle(fontSize: 9, fontFamily: 'Noto Sans Thai'),
-                  ),
-                  style: TextButton.styleFrom(
-                    minimumSize: Size(50, 0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+                    SizedBox(width: 5.0),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => output())));
+                      },
+                      child: Text(
+                        'My Orders',
+                        style: TextStyle(
+                          fontSize: 9,
+                        ),
+                      ),
+                      style: TextButton.styleFrom(
+                        minimumSize: Size(50, 0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        side: BorderSide(color: Colors.white),
+                        primary: Colors.white,
+                        backgroundColor: Colors.transparent,
+                      ),
                     ),
-                    side: BorderSide(color: Colors.white),
-                    primary: Colors.white,
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-                SizedBox(width: 5.0),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => homePage()));
-                  },
-                  child: Text(
-                    'Home',
-                    style: TextStyle(fontSize: 9, fontFamily: 'Noto Sans Thai'),
-                  ),
-                  style: TextButton.styleFrom(
-                    minimumSize: Size(50, 0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+                    SizedBox(width: 5.0),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Reserve()));
+                      },
+                      child: Text(
+                        'Reserve',
+                        style: TextStyle(
+                          fontSize: 9,
+                        ),
+                      ),
+                      style: TextButton.styleFrom(
+                        minimumSize: Size(50, 0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        side: BorderSide(color: Colors.white),
+                        primary: Colors.white,
+                        backgroundColor: Colors.transparent,
+                      ),
                     ),
-                    side: BorderSide(color: Colors.white),
-                    primary: Colors.white,
-                    backgroundColor: Colors.transparent,
-                  ),
+                    SizedBox(width: 5.0),
+                  ],
                 )
               ],
-            )
+            ),
           ],
         ),
       ),

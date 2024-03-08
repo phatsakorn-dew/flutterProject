@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:login/Reserve.dart';
 import 'package:login/about_us.dart';
+import 'package:login/authPage.dart';
 import 'package:login/output.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
@@ -23,13 +24,15 @@ class _homePageState extends State<homePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'Shippiing B2C',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Noto Sans Thai'),
+            TextButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => homePage()));
+              },
+              child: Text(
+                'ShippingB2S',
+                style: TextStyle(fontSize: 16, color: Colors.white),
+              ),
             ),
             Column(
               children: [
@@ -43,7 +46,8 @@ class _homePageState extends State<homePage> {
                       child: Text(
                         'About Us',
                         style: TextStyle(
-                            fontSize: 9, fontFamily: 'Noto Sans Thai'),
+                          fontSize: 9,
+                        ),
                       ),
                       style: TextButton.styleFrom(
                         minimumSize: Size(50, 0),
@@ -66,7 +70,8 @@ class _homePageState extends State<homePage> {
                       child: Text(
                         'My Orders',
                         style: TextStyle(
-                            fontSize: 9, fontFamily: 'Noto Sans Thai'),
+                          fontSize: 9,
+                        ),
                       ),
                       style: TextButton.styleFrom(
                         minimumSize: Size(50, 0),
@@ -87,7 +92,8 @@ class _homePageState extends State<homePage> {
                       child: Text(
                         'Reserve',
                         style: TextStyle(
-                            fontSize: 9, fontFamily: 'Noto Sans Thai'),
+                          fontSize: 9,
+                        ),
                       ),
                       style: TextButton.styleFrom(
                         minimumSize: Size(50, 0),
@@ -100,23 +106,6 @@ class _homePageState extends State<homePage> {
                       ),
                     ),
                     SizedBox(width: 5.0),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Home',
-                        style: TextStyle(
-                            fontSize: 9, fontFamily: 'Noto Sans Thai'),
-                      ),
-                      style: TextButton.styleFrom(
-                        minimumSize: Size(50, 0),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        side: BorderSide(color: Colors.white),
-                        primary: Colors.white,
-                        backgroundColor: Colors.transparent,
-                      ),
-                    )
                   ],
                 )
               ],
@@ -152,7 +141,7 @@ class _homePageState extends State<homePage> {
                       },
                       child: Text(
                         'Reserve a Container',
-                        style: TextStyle(fontFamily: 'Noto Sans Thai'),
+                        style: TextStyle(fontFamily: 'NotoSansThai'),
                       )),
                 ),
                 SizedBox(
@@ -170,9 +159,14 @@ class _homePageState extends State<homePage> {
                           width: 75,
                           height: 80,
                         ),
-                        title: Text('สาระน่ารู้พื้นฐานเกี่ยวกับตู้คอนเทนเนอร์'),
+                        title: Text(
+                          'สาระน่ารู้พื้นฐานเกี่ยวกับตู้คอนเทนเนอร์',
+                          style: TextStyle(fontFamily: 'NotoSansThai'),
+                        ),
                         subtitle: Text(
-                            'ตู้คอนเทนเนอร์ (Container Box) คือ  ตู้ที่ถูกออกแบบมาเพื่อใช้สำหรับบรรจุสินค้านำเข้าและส่งออกทางทะเล'),
+                          'ตู้คอนเทนเนอร์ (Container Box) คือ  ตู้ที่ถูกออกแบบมาเพื่อใช้สำหรับบรรจุสินค้านำเข้าและส่งออกทางทะเล',
+                          style: TextStyle(fontFamily: 'NotoSansThai'),
+                        ),
                         trailing: GestureDetector(
                           onTap: () {
                             launcher.launchUrl(Uri.parse(
@@ -184,7 +178,7 @@ class _homePageState extends State<homePage> {
                               style: TextStyle(
                                   color: Colors.blue[700],
                                   fontSize: 15,
-                                  fontFamily: 'Noto Sans Thai'),
+                                  fontFamily: 'NotoSansThai'),
                               softWrap: false,
                             ),
                           ),
@@ -201,11 +195,11 @@ class _homePageState extends State<homePage> {
                         ),
                         title: Text(
                           'สาระน่ารู้เกี่ยวกับเรือขนส่งสินค้า',
-                          style: TextStyle(fontFamily: 'Noto Sans Thai'),
+                          style: TextStyle(fontFamily: 'NotoSansThai'),
                         ),
                         subtitle: Text(
                           'เรือขนส่งสินค้า เป็นเรือที่ใช้สำหรับการบรรทุกสินค้าทั่วไป ไม่จำเป็นต้องมีสินค้าอย่างใดอย่างหนึ่ง อาจบรรทุกสินค้าที่เป็นหีบห่อหรือไม่เป็นหีบห่อก็ได้',
-                          style: TextStyle(fontFamily: 'Noto Sans Thai'),
+                          style: TextStyle(fontFamily: 'NotoSansThai'),
                         ),
                         trailing: GestureDetector(
                           onTap: () {
@@ -218,7 +212,7 @@ class _homePageState extends State<homePage> {
                               style: TextStyle(
                                   color: Colors.blue[700],
                                   fontSize: 15,
-                                  fontFamily: 'Noto Sans Thai'),
+                                  fontFamily: 'NotoSansThai'),
                               softWrap: false,
                             ),
                           ),
@@ -249,21 +243,24 @@ class _homePageState extends State<homePage> {
                     return AlertDialog(
                       title: Text(
                         'Logout Success',
-                        style: TextStyle(fontFamily: 'Noto Sans Thai'),
+                        style: TextStyle(fontFamily: 'NotoSansThai'),
                       ),
                       content: Text(
                         'Please press OK to logout.',
-                        style: TextStyle(fontFamily: 'Noto Sans Thai'),
+                        style: TextStyle(fontFamily: 'NotoSansThai'),
                       ),
                       actions: [
                         TextButton(
                           onPressed: () {
                             signUserOut();
-                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => authPage()));
                           },
                           child: Text(
                             'OK',
-                            style: TextStyle(fontFamily: 'Noto Sans Thai'),
+                            style: TextStyle(fontFamily: 'NotoSansThai'),
                           ),
                         ),
                       ],
